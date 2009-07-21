@@ -17,23 +17,25 @@ Usage
 
 API documentation format (I wish MarkDown supported definition lists):
 
- * `some code`
+ * topic: `some code`
    * `what it does`
 
 ---
 
- * `element.@some_attribute()`
+ * Retrieving attributes: `element.@some_attribute()`
    * `element.getAttribute("some_attribute")`
- * `element.@foo("bar")`
+ * Setting attributes: `element.@foo("bar")`
    * `element.setAttribute("foo", "bar"), element`
- * `let (str = "foo-bar") element.@[str]()`
+ * Using strings to dynamically use @trs: `let (str = "foo-bar") element.@[str]()`
    * `let (str = "foo-bar") element.getAttribute(str)`
- * `element.@$coords({x:1, y:2})`
+ * Storing JSON in data-* attributes: `element.@$coords({x:1, y:2})`
    * `element.setAttribute("data-coords", JSON.stringify({x:1, y:2})), element`
- * `element.@$coords()`
+ * Retrieving JSON from data-* attributes: `element.@$coords()`
    * `JSON.parse(element.getAttribute("data-coords"))`
- * `element.@foo(null)`
+ * Removing attributes: `element.@foo(null)`
    * `element.removeAttribute("foo")`
+ * Chaining: `element.@foo("1").@bar("2")`
+   * `element.setAttribute("foo", "1"), element.setAttribute("bar", "2"), element`
 
 
 Anonymous `document.createElement` examples
@@ -41,7 +43,7 @@ Anonymous `document.createElement` examples
 
     document.documentElement.appendChild(
       document.createElement("script")
-        .@type ("text/javascript;version=1.8")
+        .@type ("text/javascript;version=1.6")
         .@src  ("@trs.js")
     );
     
