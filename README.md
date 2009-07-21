@@ -8,7 +8,7 @@ Requirements
 
 @trs requires support for the [ECMA-357 standard][1], ECMAScript for XML (E4X).
 
-ECMAScript engines that support @trs: Tamarin, SpiderMonkey, TraceMonkey, ActionMonkey, Rhino.
+Supported ECMAScript engines: SpiderMonkey, TraceMonkey, ActionMonkey, and Rhino.
 
   [1]: http://www.ecma-international.org/publications/standards/Ecma-357.htm
 
