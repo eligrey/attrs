@@ -1,40 +1,47 @@
 /*
-* @trs JavaScript Library v0.1.2
-* 2009-07-10
+* @trs JavaScript Library v0.1.3.1
+* 2009-10-01
 * By Elijah Grey, http://eligrey.com
 *
-* Licenses: GNU GPL v3 and the X11/MIT license
-*           http://eligrey.com/blog/about/license
+* License: GNU GPL v3 and the X11/MIT license
+*   See COPYING.md
 */
 
-(function(){
+/* Requirements:
+*   JavaScript 1.6 or higher
+*   A json2.js-compatible JSON API:
+*      JSON.parse and JSON.stringify
+*/
+
+(function (window) {
 	// test for __noSuchMethod__ support
-	try { ({__noSuchMethod__:function(){}}).nonexistant_method(); }
-	catch (e) { return; }
+	try {
+		({__noSuchMethod__:function () {}}).nonexistant_method();
+	} catch (e) { return; }
 	
-	if (!("Element" in this) || !("JSON" in this))
+	if (!("Element" in window) || !("JSON" in window) || !("parse" in JSON)|| !("stringify" in JSON))
 		return;
 	
-	var _noSuchMethod = Element.prototype.__noSuchMethod__; // in case __noSuchMethod__ is already defined
+	// in case __noSuchMethod__ is already defined
+	var _noSuchMethod = Element.prototype.__noSuchMethod__;
 	
 	Element.prototype.__noSuchMethod__ = function (prop, args) {
 		if (prop[0] !== "@") // not an @-property
 		
-			if (typeof _noSuchMethod != "function")
-				throw new TypeError(prop + " is not a function");
-			
-			else // forward function call to original __noSuchMethod__
+			if (typeof _noSuchMethod === "function") // forward function call to original __noSuchMethod__
 				return _noSuchMethod.apply(this, Array.prototype.slice.call(arguments));
+			
+			else
+				throw new TypeError(prop + " is not a function");;
 		
 		var attr = prop.substr(1),
 		dataAttr = (attr[0] === "$"),
 		val;
 		
-		
 		if (dataAttr) // prepend data- to attribute (has leading $)
 			attr = "data-" + attr.substr(1);
 		
-		if (args.length) {
+		if (args.length > 0) {
 			val = args[0];
 			
 			if (val === null) // pass null to remove attribute
@@ -59,4 +66,4 @@
 			return val;
 		}
 	};
-}).call(this);
+}(this));
