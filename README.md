@@ -18,7 +18,7 @@ Usage
 API documentation format (I wish MarkDown supported definition lists):
 
  * topic: `some code`
-   * `what it does`
+   * `equivalent code without @trs`
 
 ---
 
@@ -43,13 +43,20 @@ Anonymous `document.createElement` examples
 
     document.documentElement.appendChild(
       document.createElement("script")
-        .@type ("text/javascript;version=1.6")
-        .@src  ("@trs.js")
+        .@type   ("text/javascript;version=1.6")
+        .@src    ("@trs.js")
+        .@charset("utf-8")
     );
     
     document.documentElement.appendChild(
       document.createElement("link")
-        .@rel  ("stylesheet")
-        .@type ("text/css")
-        .@href ("some-stylesheet.css")
+        .@rel    ("stylesheet")
+        .@type   ("text/css")
+        .@href   ("some-stylesheet.css")
+        .@charset("utf-8")
+        .@title  ("My Stylesheet")
     );
+
+
+
+![](//in.getclicky.com/212712ns.gif)
