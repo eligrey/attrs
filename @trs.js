@@ -13,6 +13,8 @@
 *      JSON.parse and JSON.stringify
 */
 
+/*! @source http://purl.eligrey.com/github/attrs/blob/master/@trs.js*/
+
 (function (window) {
 	// test for __noSuchMethod__ support
 	try {
