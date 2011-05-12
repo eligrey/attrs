@@ -59,4 +59,4 @@ Anonymous `document.createElement` examples
 
 
 
-![Tracking image](//in.getclicky.com/212712ns.gif =1x1)
+![Tracking image](//in.getclicky.com/212712ns.gif)
