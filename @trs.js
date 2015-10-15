@@ -3,7 +3,7 @@
 * 2009-10-01
 * By Eli Grey, http://eligrey.com
 *
-* Licensed under the X11/MIT License
+* Licensed under the MIT License
 *   See LICENSE.md
 */
 
